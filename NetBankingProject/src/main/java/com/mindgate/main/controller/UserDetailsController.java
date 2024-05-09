@@ -13,13 +13,13 @@ import com.mindgate.main.domain.UserDetails;
 import com.mindgate.main.service.UserDetailsServiceInterface;
 
 @RestController
-@RequestMapping("user-details")
+@RequestMapping("user")
 public class UserDetailsController {
 
 	@Autowired
 	private UserDetailsServiceInterface userDetailsService;
 
-	@PostMapping("add-user-details")
+	@PostMapping("add-user")
 	public ResponseEntity<?> addUserDetails(@RequestBody UserDetails userDetails) {
 		return userDetailsService.addUserDetails(userDetails);
 	}

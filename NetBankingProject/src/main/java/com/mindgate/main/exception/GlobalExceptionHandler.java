@@ -72,4 +72,14 @@ public class GlobalExceptionHandler {
 		problemDetail.setProperty("port", "8080");
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(problemDetail);
 	}
+
+	@ExceptionHandler(ChequeqNotAddedException.class)
+	public ResponseEntity<ProblemDetail> chequeNotAddedException(ChequeqNotAddedException chequeNotAddedException) {
+		ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.INTERNAL_SERVER_ERROR);
+		problemDetail.setTitle("chequq not added");
+		problemDetail.setType(URI.create("http://localhost:8080/cheque/add-cheque"));
+		problemDetail.setProperty("host", "localhost");
+		problemDetail.setProperty("port", "8080");
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(problemDetail);
+	}
 }
