@@ -15,10 +15,29 @@ public class GlobalExceptionHandler {
 	public ResponseEntity<ProblemDetail> userNotAddedException(UserNotAddedException userNotAddedException) {
 		ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.INTERNAL_SERVER_ERROR);
 		problemDetail.setTitle("User details not added");
-		problemDetail.setType(URI.create("http://localhost:8080/user-details/add-user-details"));
+		problemDetail.setType(URI.create("http://localhost:8080/user/add-user"));
 		problemDetail.setProperty("host", "localhost");
 		problemDetail.setProperty("port", "8080");
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(problemDetail);
+	}
 
+	@ExceptionHandler(AccountNotAddedException.class)
+	public ResponseEntity<ProblemDetail> accountNotAddedException(AccountNotAddedException accountNotAddedException) {
+		ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.INTERNAL_SERVER_ERROR);
+		problemDetail.setTitle("Account not added");
+		problemDetail.setType(URI.create("http://localhost:8080/account/add-account"));
+		problemDetail.setProperty("host", "localhost");
+		problemDetail.setProperty("port", "8080");
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(problemDetail);
+	}
+
+	@ExceptionHandler(AccountNotFoundException.class)
+	public ResponseEntity<ProblemDetail> accountNotFoundException(AccountNotFoundException accountNotFoundException) {
+		ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.INTERNAL_SERVER_ERROR);
+		problemDetail.setTitle("Account not found");
+		problemDetail.setType(URI.create("http://localhost:8080/account/get-account"));
+		problemDetail.setProperty("host", "localhost");
+		problemDetail.setProperty("port", "8080");
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(problemDetail);
 	}
 }

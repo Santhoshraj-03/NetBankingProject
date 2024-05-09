@@ -9,7 +9,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class ChequeDetails {
 
-	private int chequeNo;
+	private long chequeNo;
 	private AccountDetails issuerAccNo;
 	private AccountDetails receiverAccNo;
 	private double chequeAmount;
