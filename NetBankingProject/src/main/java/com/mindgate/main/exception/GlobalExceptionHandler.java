@@ -50,4 +50,15 @@ public class GlobalExceptionHandler {
 		problemDetail.setProperty("port", "8080");
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(problemDetail);
 	}
+
+	@ExceptionHandler(TransactionNotAddedException.class)
+	public ResponseEntity<ProblemDetail> transactionNotAddedException(
+			TransactionNotAddedException transactionNotAddedException) {
+		ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.INTERNAL_SERVER_ERROR);
+		problemDetail.setTitle("transaction not added");
+		problemDetail.setType(URI.create("http://localhost:8080/transaction/add-transaction"));
+		problemDetail.setProperty("host", "localhost");
+		problemDetail.setProperty("port", "8080");
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(problemDetail);
+	}
 }

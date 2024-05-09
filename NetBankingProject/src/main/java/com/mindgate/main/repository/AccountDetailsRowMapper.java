@@ -13,6 +13,8 @@ public class AccountDetailsRowMapper implements RowMapper<AccountDetails> {
 
 	@Override
 	public AccountDetails mapRow(ResultSet rs, int rowNum) throws SQLException {
+
+//		AccountDetails
 		long accountNumber = rs.getLong("acc_number");
 		int userId = rs.getInt("user_id");
 		String ifscCode = rs.getString("ifsc_code");
@@ -21,6 +23,8 @@ public class AccountDetailsRowMapper implements RowMapper<AccountDetails> {
 		double overdraftBalnce = rs.getDouble("od_balance");
 		double overdraftCharges = rs.getDouble("od_charges");
 		String accountType = rs.getString("acc_type");
+
+//		User Details
 		int userid = rs.getInt("user_id");
 		String firstName = rs.getString("first_name");
 		String lastName = rs.getString("last_name");
@@ -33,6 +37,7 @@ public class AccountDetailsRowMapper implements RowMapper<AccountDetails> {
 		String password = rs.getString("password");
 		int loginAccount = rs.getInt("login_count");
 		String accountStatus = rs.getString("acc_status");
+
 		UserDetails userDetails = new UserDetails(userId, firstName, lastName, emailId, address, userid, date, gender,
 				userType, userName, password, loginAccount, accountStatus);
 
