@@ -61,4 +61,15 @@ public class GlobalExceptionHandler {
 		problemDetail.setProperty("port", "8080");
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(problemDetail);
 	}
+
+	@ExceptionHandler(FixedDepositNotAddedException.class)
+	public ResponseEntity<ProblemDetail> fixedDepositNotAddedException(
+			FixedDepositNotAddedException fixedDepositNotAddedException) {
+		ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.INTERNAL_SERVER_ERROR);
+		problemDetail.setTitle("fixed deposit not added");
+		problemDetail.setType(URI.create("http://localhost:8080/fd/add-fd"));
+		problemDetail.setProperty("host", "localhost");
+		problemDetail.setProperty("port", "8080");
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(problemDetail);
+	}
 }
