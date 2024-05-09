@@ -40,4 +40,14 @@ public class GlobalExceptionHandler {
 		problemDetail.setProperty("port", "8080");
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(problemDetail);
 	}
+
+	@ExceptionHandler(UserNotFoundException.class)
+	public ResponseEntity<ProblemDetail> userNotFoundException(UserNotFoundException userNotFoundException) {
+		ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.INTERNAL_SERVER_ERROR);
+		problemDetail.setTitle("User not found");
+		problemDetail.setType(URI.create("http://localhost:8080/user/get-user"));
+		problemDetail.setProperty("host", "localhost");
+		problemDetail.setProperty("port", "8080");
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(problemDetail);
+	}
 }

@@ -7,5 +7,8 @@ import com.mindgate.main.domain.UserDetails;
 public interface UserDetailsServiceInterface {
 
 	public ResponseEntity<?> addUserDetails(UserDetails userDetails);
-	
+
+	public ResponseEntity<?> getAllUserDetails();
+
+	public ResponseEntity<?> getUserDetailsByUserId(int userId);
 }
